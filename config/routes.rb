@@ -7,7 +7,16 @@ Rails.application.routes.draw do
     registrations: "public/registrations",
     sessions: "public/sessions"
   }
-  
-  root to: "homes#"
+
+  scope module: :public do
+    root to: "homes#top"
+    get "/about", to: "homes#about", as: "about"
+  end
+
+  scope module: :admin do
+    get "/admin", to: "homes#top", as: "admin"
+  end
+
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
