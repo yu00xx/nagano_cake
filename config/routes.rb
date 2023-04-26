@@ -13,7 +13,8 @@ Rails.application.routes.draw do
     root to: "homes#top"
     get "/about", to: "homes#about"
     resources :items, only: [:index, :show]
-    resources :customers, only: [:show, :edit]
+    get "/customers/mypage", to: "customers#show"
+    get "/customers/information/edit", to: "customers#edit"
     resources :cart_items, only: [:index]
     resources :orders, only: [:index, :show]
   end
