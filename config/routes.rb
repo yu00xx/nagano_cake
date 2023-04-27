@@ -15,6 +15,9 @@ Rails.application.routes.draw do
     resources :items, only: [:index, :show]
     get "/customers/mypage", to: "customers#show"
     get "/customers/information/edit", to: "customers#edit"
+    patch "/customers/information", to: "customers#update"
+    get "/customers/comfirm_withdraw", to: "customers#comfirm_withdraw"
+    patch "/customers/withdraw", to: "customers#withdraw"
     resources :cart_items, only: [:index]
     resources :orders, only: [:index, :show]
   end
