@@ -18,9 +18,9 @@ class Public::SessionsController < Devise::SessionsController
   # end
 
   # POST /resource/sign_in
-  # def create
-  #   super
-  # end
+  #def create
+    #super
+  #end
 
   # DELETE /resource/sign_out
   # def destroy
@@ -31,13 +31,11 @@ class Public::SessionsController < Devise::SessionsController
 
   # If you have extra params to permit, append them to the sanitizer.
   def customer_state
-    @customer = Customer.find_by(email: params[:customer] [:email])
+    @customer = Customer.find_by(email: params[:customer][:email])
     return if !@customer
     if @customer.valid_password?(params[:customer][:password])
       if @customer.is_deleted?
         redirect_to new_customer_registration_path
-      else
-        render "create"
       end
     end
   end

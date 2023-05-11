@@ -13,10 +13,23 @@
   <body>
     <header>
       <% if admin_signed_in? %>
-        <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
-      <% end %>
+        <li>
+          <%= link_to "商品一覧", admin_items_path %>
+        </li>
 
-      <% if customer_signed_in? %>
+        <li>
+          <%= link_to "会員一覧", admin_customers_path %>
+        </li>
+
+        <li>
+          <%= link_to "注文履歴一覧", admin_path %>
+        </li>
+
+        <li>
+          <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
+        </li>
+      <% elsif customer_signed_in? %>
+
         <li>
           <%= link_to "マイページ", customers_mypage_path %>
         </li>
