@@ -4,4 +4,10 @@
   <p><%= @item.introduction %></p>
   <p>¥ <%= @item.price %>(税抜)</p>
 </div>
-<%= link_to "カートに入れる", cart_items_path %>
+
+<%= form_with model: @cart_item do |f| %>
+  <%= f.select :amount, *[1..10] %>
+  <%= f.hidden_field :itemid, :value => @item.id %>
+  <%= f.submit "カートに入れる" %>
+<% end %>
+
