@@ -19,6 +19,7 @@ Rails.application.routes.draw do
     get "/customers/comfirm_withdraw", to: "customers#comfirm_withdraw"
     patch "/customers/withdraw", to: "customers#withdraw"
     resources :cart_items, only: [:create, :index, :destroy]
+    delete "/cart_items/destroy_all", to: "cart_items#destroy_all"
     resources :orders, only: [:new, :index, :show]
   end
 
