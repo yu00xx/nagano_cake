@@ -18,8 +18,8 @@ Rails.application.routes.draw do
     patch "/customers/information", to: "customers#update"
     get "/customers/comfirm_withdraw", to: "customers#comfirm_withdraw"
     patch "/customers/withdraw", to: "customers#withdraw"
-    resources :cart_items, only: [:create, :index]
-    resources :orders, only: [:index, :show]
+    resources :cart_items, only: [:create, :index, :destroy]
+    resources :orders, only: [:new, :index, :show]
   end
 
   namespace :admin do
