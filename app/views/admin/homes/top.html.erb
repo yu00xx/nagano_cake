@@ -1,1 +1,24 @@
-Admin/top
+<h2>注文履歴一覧</h2>
+
+<table>
+  <thead>
+    <th>購入日時</th>
+    <th>購入者</th>
+    <th>注文個数</th>
+  </thead>
+
+  <tbody>
+    <% @order_all.each do |order_all| %>
+      <tr>
+        <td><%= order_all.created_at.strftime('%Y/%m/%d %H:%M:%S') %></td>
+        <td><%= order_all.customer.last_name %> <%= order_all.customer.first_name %></td>
+        <td><%= order_all.amount %></td>
+      </tr>
+    <% end %>
+
+      <tr>
+        <td>
+          <%= paginate @order_all %>
+        </td>
+  </tbody>
+</table>
