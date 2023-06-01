@@ -1,5 +1,5 @@
 <h2>ショッピングカート</h2>
-<%= link_to "カートを空にする", cart_items_destroy_all_path, method: :delete %>
+<%= link_to "カートを空にする", destroy_all_cart_items_path, method: :delete %>
 <table>
   <thead>
     <th>商品名</th>
@@ -14,6 +14,7 @@
       <tr>
         <td><%= cart_item.item.name %></td>
         <td><%= cart_item.item.with_tax_price %></td>
+        <td><%= cart_item.select :amount, *[1..10] %></td>
         <td><%= cart_item.amount %></td>
         <td><%= cart_item.subtotal %></td>
         <% @total += cart_item.subtotal %>
