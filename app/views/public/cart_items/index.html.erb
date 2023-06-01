@@ -14,7 +14,6 @@
       <tr>
         <td><%= cart_item.item.name %></td>
         <td><%= cart_item.item.with_tax_price %></td>
-        <td><%= cart_item.select :amount, *[1..10] %></td>
         <td><%= cart_item.amount %></td>
         <td><%= cart_item.subtotal %></td>
         <% @total += cart_item.subtotal %>
