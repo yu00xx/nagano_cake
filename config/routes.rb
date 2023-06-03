@@ -23,7 +23,12 @@ Rails.application.routes.draw do
         delete :destroy_all
       end
     end
-    resources :orders, only: [:new, :index, :show]
+    resources :orders, only: [:new, :create, :index, :show] do
+      collection do
+        post :confirm
+        get :complete
+      end
+    end
   end
 
   namespace :admin do
