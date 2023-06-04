@@ -29,13 +29,16 @@ class Public::OrdersController < ApplicationController
 
   def create
     @order = Order.new(order_params)
-    binding.pry
+    @order.postage = 800
+    @order.customer_id = current_customer.id
+    #binding.pry
     @order.save
+    redirect_to complete_orders_path
   end
 
   private
 
   def order_params
-    params.require(:order).permit(:payment_method, :shipping_postal_code, :shipping_address, :shipping_name)
+    params.require(:order).permit(:payment, :shipping_postal_code, :shipping_address, :shipping_name, :billing_amount)
   end
 end
