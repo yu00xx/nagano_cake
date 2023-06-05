@@ -33,6 +33,16 @@ class Public::OrdersController < ApplicationController
     @order.customer_id = current_customer.id
     #binding.pry
     @order.save
+    cart_items = current_customer.cart_items.all
+    cart_items.each do |cart_item|
+      @order_detail = OrderDetail.new
+      @order_detail.item_id = cart_item.id
+      @order_detail.order_id = @order.id
+      @order_detail.amount = cart_item.amount
+      @order_detail.tax_included_price = cart_item.item.with_tax_price
+      @order_detail.save
+    end
+    cart_items.destroy_all
     redirect_to complete_orders_path
   end
 
