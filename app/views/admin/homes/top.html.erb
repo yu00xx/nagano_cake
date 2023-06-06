@@ -10,9 +10,12 @@
   <tbody>
     <% @order_all.each do |order_all| %>
       <tr>
-        <td><%= order_all.created_at.strftime('%Y/%m/%d %H:%M:%S') %></td>
-        <td><%= order_all.@customer.last_name %> <%= order_all.@customer.first_name %></td>
-        <td><%= order_all.cart_item.amount %></td>
+        <td>
+          <%= link_to admin_order_path(order_all.id) do %>
+            <%= order_all.created_at.strftime('%Y/%m/%d %H:%M:%S') %>
+          <% end %>
+        </td>
+        <td><%= order_all.customer.last_name %><%= order_all.customer.first_name %></td>
       </tr>
     <% end %>
 
