@@ -16,6 +16,13 @@
           <% end %>
         </td>
         <td><%= order_all.customer.last_name %><%= order_all.customer.first_name %></td>
+        <td>
+          <% order_item_amount = 0 %>
+          <% order_all.order_details.each do |order_detail| %>
+            <% order_item_amount += order_detail.amount %>
+          <% end %>
+          <%= order_item_amount %>
+        </td>
       </tr>
     <% end %>
 
