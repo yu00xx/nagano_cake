@@ -10,7 +10,7 @@ class Public::CartItemsController < ApplicationController
       redirect_to cart_items_path
     else
       @cart_item.save
-      redirect_to cart_items_path
+        redirect_to cart_items_path
     end
   end
 
