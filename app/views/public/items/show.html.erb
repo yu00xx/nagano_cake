@@ -6,9 +6,11 @@
   <p>¥ <%= @item.price %>(税抜)</p>
 </div>
 
-<%= form_with model: @cart_item do |f| %>
-  <%= f.select :amount, *[1..10],{include_blank: "個数選択"} %>
-  <%= f.hidden_field :item_id, :value => @item.id %>
-  <%= f.submit "カートに入れる" %>
+<% if customer_signed_in? %>
+  <%= form_with model: @cart_item do |f| %>
+    <%= f.select :amount, *[1..10],{include_blank: "個数選択"} %>
+    <%= f.hidden_field :item_id, :value => @item.id %>
+    <%= f.submit "カートに入れる" %>
+  <% end %>
 <% end %>
 

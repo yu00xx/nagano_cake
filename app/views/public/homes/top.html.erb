@@ -1,8 +1,43 @@
-<h6>
-  ようこそ、ながのCAKEへ！</br>
-  このサイトは、ケーキ販売のECサイトになります。</br>
-  会員でない方も商品の閲覧はできますが、</br>
-  購入には会員登録が必要になります。
-</h6>
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+    </div>
+    <div class="col-md-9">
+      <div class="card bg-dark text-black mt-5">
+        <%= image_tag 'no_image.jpg', class:"card-img", height:"300px;" %>
+        <div class="card-img-overlay text-center ">
+          <h5 class="card-title">ようこそ、ながのCAKEへ！</h5>
+          <p class="card-text">このサイトは、ケーキ販売のECサイトになります。</p>
+          <p class="card-text">会員でない方も商品の閲覧はできますが</p>
+          <p class="card-text">購入には会員登録が必要になります。</p>
+        </div>
+      </div>
+      <div>
+        <h3 class="mt-4">新着商品</h3>
+      </div>
+        <div class="d-flex">
+          <% @item.each do |item| %>
+            <div class="card-group mr-5">
+              <div class="card">
+                <div class="card-img-top">
+                  <%= link_to item_path(item.id) do %>
+                    <%= image_tag item.get_image(100,100) %>
+                  <% end %>
+                </div>
+                <div class="card-body">
+                  <p class="card-text"><%= item.name %></p>
+                  <p class="card-text">¥<%= item.price %></p>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </div>
+        <div class="text-right">
+          <u>
+            <%= link_to "全ての商品を見る>", items_path %>
+          </u>
+        </div>
+    </div>
+  </div>
+</div>
 
-<h3>新着商品</h3>
