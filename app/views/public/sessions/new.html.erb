@@ -1,26 +1,63 @@
-<h3>ログイン</h3>
-<h6>会員の方はこちらからログイン</h6>
-<%= form_with model: @customer, url: customer_session_path do |f| %>
-  <div class="field">
-    <%= f.label "メールアドレス" %>
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label "パスワード" %>
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
-
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-5 mt-4">
+      <div class="text-center">
+        <h4><span class="bg-light">ログイン</span></h4>
+      </div>
     </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit "ログイン" %>
   </div>
-<% end %>
+  <div class="row">
+    <div class="col-md-5 mt-4 ml-5">
+      <div class="text-center ml-2">
+        <h6><span class="bg-light">会員の方はこちらからログイン</span></h6>
+      </div>
+    </div>
+  </div>
+  <div class="mt-4">
+    <%= form_with model: @customer, url: customer_session_path do |f| %>
+      <div class="form-group row">
+        <div class="input-group">
+          <div class="col-md-2"></div>
+          <label for="inputEmail" class="col-md-3 col-form-label text-center">メールアドレス</label>
+          <div class="col-md-4 d-flex">
+          <%= f.email_field :email, class:"form-control", autofocus: true, autocomplete: "email" %>
+          </div>
+          <div class="col-md-3"></div>
+        </div>
+      </div>
+      <div class="form-group row">
+        <div class="input-group">
+          <div class="col-md-2"></div>
+          <label for="inputPassword" class="col-md-3 col-form-label text-center">パスワード</label>
+          <div class="col-md-4 d-flex">
+          <%= f.password_field :password, class:"form-control", autocomplete: "current-password" %>
+          </div>
+          <div class="col-md-3"></div>
+        </div>
+      </div>
 
-<%= render "public/shared/links" %>から新規登録を行ってください。
+      <div class="form-group row">
+        <div class="input-group mt-3">
+          <div class="col-md-2"></div>
+          <span class="col-md-3"></span>
+          <div class="col-md-4 d-flex">
+            <%= f.submit "ログイン", class:"btn btn-success" %>
+          </div>
+          <div class="col-md-3"></div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <div class="row">
+    <div class="col-md-5 mt-5 ml-5">
+      <div class="text-center ml-2">
+        <h6><span class="bg-light">会員登録がお済みでない方</span></h6>
+      </div>
+      <div class="text-right">
+        <u class="mr-3"><%= render "public/shared/links" %></u>から新規登録を行ってください。
+      </div>
+    </div>
+  </div>
+</div>
+
+
