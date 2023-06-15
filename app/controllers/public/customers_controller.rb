@@ -14,7 +14,7 @@ class Public::CustomersController < ApplicationController
     redirect_to customers_mypage_path
   end
 
-  def comfirm_withdraw
+  def confirm_withdraw
     @customer = current_customer
   end
 

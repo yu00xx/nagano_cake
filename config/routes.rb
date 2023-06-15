@@ -16,7 +16,7 @@ Rails.application.routes.draw do
     get "/customers/mypage", to: "customers#show"
     get "/customers/information/edit", to: "customers#edit"
     patch "/customers/information", to: "customers#update"
-    get "/customers/comfirm_withdraw", to: "customers#comfirm_withdraw"
+    get "/customers/confirm_withdraw", to: "customers#confirm_withdraw"
     patch "/customers/withdraw", to: "customers#withdraw"
     resources :cart_items, only: [:create, :index, :update, :destroy] do
       collection do

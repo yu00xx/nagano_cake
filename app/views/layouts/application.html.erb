@@ -18,15 +18,15 @@
             <ul class="nav justify-content-end">
             <% if admin_signed_in? %>
               <li class="nav-item">
-                <button type="button" class="btn btn-outline-secondary mr-3"><%= link_to "商品一覧", admin_items_path %></button>
+                <button type="button" class="btn btn-outline-secondary mr-3"><%= link_to "商品一覧", admin_items_path, class: 'nav-link text-dark' %></button>
               </li>
 
               <li class="nav-item">
-                <button type="button" class="btn btn-outline-secondary mr-3"><%= link_to "会員一覧", admin_customers_path %></button>
+                <button type="button" class="btn btn-outline-secondary mr-3"><%= link_to "会員一覧", admin_customers_path, class: 'nav-link text-dark' %></button>
               </li>
 
               <li class="nav-item">
-                <button type="button" class="btn btn-outline-secondary mr-3"><%= link_to "注文履歴一覧", admin_path %></button>
+                <button type="button" class="btn btn-outline-secondary mr-3"><%= link_to "注文履歴一覧", admin_path, class: 'nav-link text-dark' %></button>
               </li>
 
               <li class="nav-item">

@@ -1,34 +1,44 @@
-<h2>注文履歴一覧</h2>
+<div class="container pt-5">
+  <div class="row justify-content-center pb-3">
+    <div class="col-md-8">
+      <h4><span class="bg-light">注文履歴一覧</span></h4>
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+    <table class="table">
+      <thead class="thead-light">
+        <th scope="col">購入日時</th>
+        <th scope="col">購入者</th>
+        <th scope="col">注文個数</th>
+      </thead>
+      <tbody>
+        <% @order_all.each do |order_all| %>
+        <tr>
+          <td class="link-dark" style="width: 40%">
+            <%= link_to admin_order_path(order_all.id) do %>
+              <%= order_all.created_at.strftime('%Y/%m/%d %H:%M:%S') %>
+            <% end %>
+          </td>
+          <td class="align-middle" style="width: 15%"><%= order_all.customer.last_name %><%= order_all.customer.first_name %></td>
+          <td class="align-middle" style="width: 15%">
+            <% order_item_amount = 0 %>
+            <% order_all.order_details.each do |order_detail| %>
+              <% order_item_amount += order_detail.amount %>
+            <% end %>
+            <%= order_item_amount %>
+          </td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    <div class="col-md-auto">
+      <%= paginate @order_all %>
+    </div>
+  </div>
+</div>
 
-<table>
-  <thead>
-    <th>購入日時</th>
-    <th>購入者</th>
-    <th>注文個数</th>
-  </thead>
 
-  <tbody>
-    <% @order_all.each do |order_all| %>
-      <tr>
-        <td>
-          <%= link_to admin_order_path(order_all.id) do %>
-            <%= order_all.created_at.strftime('%Y/%m/%d %H:%M:%S') %>
-          <% end %>
-        </td>
-        <td><%= order_all.customer.last_name %><%= order_all.customer.first_name %></td>
-        <td>
-          <% order_item_amount = 0 %>
-          <% order_all.order_details.each do |order_detail| %>
-            <% order_item_amount += order_detail.amount %>
-          <% end %>
-          <%= order_item_amount %>
-        </td>
-      </tr>
-    <% end %>
-
-      <tr>
-        <td>
-          <%= paginate @order_all %>
-        </td>
-  </tbody>
-</table>
