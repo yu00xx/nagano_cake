@@ -1,34 +1,36 @@
 <div class="container">
-  <div class="row">
-    <div class="col-md-3"></div>
-    <div class="col-md-9 pt-5">
-    <div class="card-mb-3">
-      <div class="row no-gutters">
-        <div class="col-md-4">
-          <%= image_tag @item.get_image(200,200), class:"bd-placeholder-img" %>
-        </div>
+  <div class="row mt-5">
+    <div class="col-md-5 text-center">
+      <%= image_tag @item.get_image(200,200), class:"bd-placeholder-img" %>
+    </div>
+    <div class="col-md-7">
+      <div class="row">
         <div class="col-md-8">
-          <div class="card-body">
-            <h3 class="card-title"><%= @item.name %></h3>
-            <p class="card-text"><%= @item.introduction %></p>
-            <div class="d-flex">
-            <h3 class="card-text">¥ <%= @item.price %></h3>
-            <p class="pt-2 pl-1"><small>(税抜)</small></p>
-            </div>
-            <div>
-              <% if customer_signed_in? %>
-                <%= form_with model: @cart_item do |f| %>
-                  <%= f.select :amount, *[1..10],{include_blank: "個数選択"} %>
-                  <%= f.hidden_field :item_id, :value => @item.id %>
-                  <%= f.submit "カートに入れる", class:"btn btn-success ml-2" %>
-                <% end %>
-              <% end %>
-            </div>
-          </div>
-          </div>
+          <h3 class="font-weight-bold"><%= @item.name %></h3>
         </div>
       </div>
-    </div>
+      <div class="row mt-3">
+        <div class="col-md-8">
+          <p class="font-weight-bold"><%= @item.introduction %></p>
+        </div>
+      </div>
+      <div class="row mt-3">
+        <div class="col-md-8 d-flex">
+          <h3 class="card-text">¥ <%= @item.price %></h3>
+            <p class="pt-2 pl-1"><small>(税抜)</small></p>
+        </div>
+      </div>
+      <div class="row mt-3">
+        <div class="col-md-8">
+          <% if customer_signed_in? %>
+            <%= form_with model: @cart_item do |f| %>
+              <%= f.select :amount, *[1..10],{include_blank: "個数選択"} %>
+              <%= f.hidden_field :item_id, :value => @item.id %>
+              <%= f.submit "カートに入れる", class:"btn btn-success ml-2" %>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
     </div>
   </div>
 </div>
