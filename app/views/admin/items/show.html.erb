@@ -30,7 +30,7 @@
           <p>税抜価格</p>
         </div>
         <div class="col-md-8">
-          <%= @item.price %>
+          <%= @item.price.to_s(:delimited) %>
         </div>
       </div>
       <div class="row mt-5">
